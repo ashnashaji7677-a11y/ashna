@@ -1,0 +1,226 @@
+import { User, Item, Claim, Conversation, Message } from '../types';
+
+export const SEED_USERS: User[] = [
+  {
+    id: 'user-alex',
+    email: 'alex.turner@example.com',
+    full_name: 'Alex Turner',
+    avatar_url: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
+    phone: '+1 (555) 234-5678',
+    contact_preference: 'chat',
+    created_at: '2026-01-15T09:00:00Z',
+  },
+  {
+    id: 'user-sarah',
+    email: 'sarah.connor@example.com',
+    full_name: 'Sarah Connor',
+    avatar_url: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80',
+    phone: '+1 (555) 876-5432',
+    contact_preference: 'chat',
+    created_at: '2026-02-01T14:30:00Z',
+  },
+  {
+    id: 'user-marcus',
+    email: 'marcus.vance@example.com',
+    full_name: 'Marcus Vance',
+    avatar_url: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
+    phone: '+1 (555) 432-1098',
+    contact_preference: 'chat',
+    created_at: '2026-02-10T11:15:00Z',
+  },
+];
+
+export const SEED_ITEMS: Item[] = [
+  // FOUND ITEMS
+  {
+    id: 'item-found-1',
+    user_id: 'user-alex',
+    item_name: 'Sony WH-1000XM4 Wireless Headphones in Case',
+    category: 'Electronics',
+    description: 'Found black over-ear Sony noise-canceling headphones inside their official hard-shell zipper case left on a bench near Platform 2.',
+    location: 'Central Metro Station (Platform 2)',
+    date_reported: '2026-11-03',
+    item_type: 'found',
+    image_urls: [
+      'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1583394838336-acd977736f90?w=800&auto=format&fit=crop&q=80',
+    ],
+    status: 'claimed',
+    additional_details: 'The case has some accessories inside the mesh pouch. To verify ownership, please name the accessories or provide proof of purchase.',
+    contact_preference: 'chat',
+    created_at: '2026-11-03T16:20:00Z',
+  },
+  {
+    id: 'item-found-2',
+    user_id: 'user-marcus',
+    item_name: 'BMW Key Fob with Braided Leather Keychain',
+    category: 'Keys',
+    description: 'Found a BMW key fob on the wooden picnic table near the south running loop. Has a braided leather keychain and a small silver tag.',
+    location: 'Riverside Community Park, South Loop',
+    date_reported: '2026-11-04',
+    item_type: 'found',
+    image_urls: [
+      'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?w=800&auto=format&fit=crop&q=80',
+    ],
+    status: 'open',
+    additional_details: 'Turned over to the park ranger office for safekeeping, but I am coordinating with the owner.',
+    contact_preference: 'chat',
+    created_at: '2026-11-04T10:45:00Z',
+  },
+  {
+    id: 'item-found-3',
+    user_id: 'user-sarah',
+    item_name: 'AirPods Pro 2 in Sage Green Silicone Case',
+    category: 'Electronics',
+    description: 'Found Apple AirPods Pro 2 in a sage green protective case with a small carabiner attached. Found sitting under table 14 in the library study lounge.',
+    location: 'University Library 2nd Floor Study Lounge',
+    date_reported: '2026-11-05',
+    item_type: 'found',
+    image_urls: [
+      'https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=800&auto=format&fit=crop&q=80',
+    ],
+    status: 'open',
+    additional_details: 'Owner should tell me what engraved initials or emoji is on the front, or show matching Find My screenshot.',
+    contact_preference: 'chat',
+    created_at: '2026-11-05T13:10:00Z',
+  },
+  {
+    id: 'item-found-4',
+    user_id: 'user-alex',
+    item_name: "Fossil Minimalist Men's Chronograph Watch",
+    category: 'Jewelry & Watches',
+    description: 'Silver casing with brown leather strap. Found left behind in the restroom counter near the main lobby.',
+    location: 'Oakwood Galleria Mall, 1st Floor',
+    date_reported: '2026-11-02',
+    item_type: 'found',
+    image_urls: [
+      'https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=800&auto=format&fit=crop&q=80',
+    ],
+    status: 'open',
+    additional_details: 'Back plate has an engraving. Owner must specify what is engraved.',
+    contact_preference: 'chat',
+    created_at: '2026-11-02T19:00:00Z',
+  },
+
+  // LOST ITEMS
+  {
+    id: 'item-lost-1',
+    user_id: 'user-sarah',
+    item_name: 'Navy Blue Herschel Little America Backpack',
+    category: 'Bags & Backpacks',
+    description: 'Lost my navy blue backpack containing my university lecture notes, Texas Instruments calculator, and a yellow hydro flask.',
+    location: 'Science Building Lecture Hall C or Campus Cafe',
+    date_reported: '2026-11-04',
+    item_type: 'lost',
+    image_urls: [
+      'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1546938576-6e6a64f317cc?w=800&auto=format&fit=crop&q=80',
+    ],
+    status: 'open',
+    additional_details: 'Has a small enamel pin of a NASA rocket on the front bottom pocket.',
+    contact_preference: 'chat',
+    created_at: '2026-11-04T18:00:00Z',
+  },
+  {
+    id: 'item-lost-2',
+    user_id: 'user-alex',
+    item_name: 'Tan Leather Bifold Wallet (Bellroy)',
+    category: 'Wallets & Purses',
+    description: 'Lost slim caramel leather Bellroy wallet containing driver license (Alex Turner), transit card, and gym badge.',
+    location: 'City Bus #14 or 4th Street Station Entrance',
+    date_reported: '2026-11-05',
+    item_type: 'lost',
+    image_urls: [
+      'https://images.unsplash.com/photo-1627123424574-724758594e93?w=800&auto=format&fit=crop&q=80',
+    ],
+    status: 'open',
+    additional_details: 'I just need the ID and transit pass back urgently; keep whatever cash was inside as a reward!',
+    contact_preference: 'chat',
+    created_at: '2026-11-05T08:30:00Z',
+  },
+  {
+    id: 'item-lost-3',
+    user_id: 'user-marcus',
+    item_name: 'Tortoise Shell Prescription Reading Glasses',
+    category: 'Clothing & Accessories',
+    description: 'Round Oliver Peoples style tortoise frames in a black magnetic fold case. Very high prescription.',
+    location: 'Metropolitan Art Museum, 2nd Floor Gallery',
+    date_reported: '2026-11-01',
+    item_type: 'lost',
+    image_urls: [
+      'https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=800&auto=format&fit=crop&q=80',
+    ],
+    status: 'open',
+    additional_details: 'Left case on the wooden bench next to Impressionism wing.',
+    contact_preference: 'chat',
+    created_at: '2026-11-01T15:20:00Z',
+  },
+];
+
+export const SEED_CLAIMS: Claim[] = [
+  {
+    id: 'claim-1',
+    item_id: 'item-found-1',
+    claimant_id: 'user-sarah',
+    reviewer_id: 'user-alex',
+    evidence_image_urls: [
+      'https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=800&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&auto=format&fit=crop&q=80',
+    ],
+    evidence_description: 'These are my Sony XM4 headphones! Inside the mesh accessory pouch, there is an airplane twin-plug adapter and a folded receipt from Grand Central coffee shop dated Nov 2nd. Also, the left ear cup has a tiny scratch near the NFC logo.',
+    secret_details: 'The Bluetooth device name saved in the headphone is "Sarah’s XM4s" and serial number ends in -8491.',
+    status: 'under_review',
+    created_at: '2026-11-04T12:00:00Z',
+    updated_at: '2026-11-04T14:30:00Z',
+  },
+];
+
+export const SEED_CONVERSATIONS: Conversation[] = [
+  {
+    id: 'conv-1',
+    item_id: 'item-found-1',
+    claim_id: 'claim-1',
+    claimant_id: 'user-sarah',
+    finder_id: 'user-alex',
+    created_at: '2026-11-04T14:30:00Z',
+    last_message: 'Hi Sarah, I reviewed your claim details and the airplane adapter matches! Would you like to meet at the Central Station lobby tomorrow?',
+    last_message_at: '2026-11-04T15:10:00Z',
+  },
+];
+
+export const SEED_MESSAGES: Message[] = [
+  {
+    id: 'msg-1',
+    conversation_id: 'conv-1',
+    sender_id: 'user-sarah',
+    message_text: 'Hi Alex! Thank you so much for reporting these headphones. I was so worried I had lost them for good on the train.',
+    created_at: '2026-11-04T14:35:00Z',
+    read_at: '2026-11-04T14:40:00Z',
+  },
+  {
+    id: 'msg-2',
+    conversation_id: 'conv-1',
+    sender_id: 'user-alex',
+    message_text: 'No problem at all! I found them sitting on the Platform 2 bench right after the express train departed. The case was completely intact.',
+    created_at: '2026-11-04T14:45:00Z',
+    read_at: '2026-11-04T14:48:00Z',
+  },
+  {
+    id: 'msg-3',
+    conversation_id: 'conv-1',
+    sender_id: 'user-sarah',
+    message_text: 'Here is a photo of the original box with the barcode in case you want to double-check the serial number before we meet.',
+    attachment_url: 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=800&auto=format&fit=crop&q=80',
+    created_at: '2026-11-04T14:50:00Z',
+    read_at: '2026-11-04T14:55:00Z',
+  },
+  {
+    id: 'msg-4',
+    conversation_id: 'conv-1',
+    sender_id: 'user-alex',
+    message_text: 'Hi Sarah, I reviewed your claim details and the airplane adapter matches! Would you like to meet at the Central Station lobby tomorrow?',
+    created_at: '2026-11-04T15:10:00Z',
+    read_at: null,
+  },
+];
+
